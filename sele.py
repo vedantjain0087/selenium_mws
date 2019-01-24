@@ -10,9 +10,17 @@ import datetime
 from datetime import timedelta
 from selenium.webdriver.common.keys import Keys
 
+#https://www.google.com/url?q=https://askubuntu.com/questions/1004947/how-do-i-use-the-chrome-driver-in-ubuntu-16-04&sa=D&source=hangouts&ust=1548433440374000&usg=AFQjCNGWjgKy6sQegFnQpXcsNa6RN8fIYw
 
-options = Options()
-driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
+
+# options = Options()
+options = webdriver.ChromeOptions()
+# options.add_argument('headless')
+# options.add_argument('window-size=1200x600'); // optional
+
+driver = webdriver.Chrome(chrome_options=options, executable_path='/usr/lib/chromium-browser/chromedriver')
+
+# driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
 driver.get('https://sellercentral.amazon.com./')
 driver.find_element_by_xpath('//*[@id="sign-in-button"]/button').click()
 username = driver.find_element_by_xpath('//*[@id="ap_email"]')
